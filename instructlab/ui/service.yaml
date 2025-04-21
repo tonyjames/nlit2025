@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: ui
+  namespace: instructlab
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/component: ui
+    app.kubernetes.io/instance: ui
+    app.kubernetes.io/name: ui
+  ports:
+    - port: 8080
+      targetPort: 3000
