@@ -4,8 +4,8 @@ metadata:
   name: servicemeshoperator
   namespace: openshift-operators
 spec:
-  channel: stable-2.4
+  channel: stable
   installPlanApproval: Automatic
   name: servicemeshoperator
-  source: redhat-operators
-  sourceNamespace: openshift-marketplace
+  source: servicemeshoperator-catalogsource
+  sourceNamespace: openshift-operators

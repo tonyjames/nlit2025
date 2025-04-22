@@ -4,7 +4,5 @@ metadata:
   name: dspa
 spec:
   persistentStorage:
-    storageClassName: nfs-csi
+    storageClassName: gp3-csi
     size: 20Gi
-
-# TODO: replace storageClassName
