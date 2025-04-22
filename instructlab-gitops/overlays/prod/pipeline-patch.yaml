@@ -1,0 +1,8 @@
+apiVersion: datasciencepipelinesapplications.opendatahub.io/v1alpha1
+kind: DataSciencePipelinesApplication
+metadata:
+  name: dspa
+spec:
+  persistentStorage:
+    storageClassName: ocs-rwx
+    size: 100Gi

@@ -1,0 +1,32 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- dspa.yaml
+- storage-class.yaml
+- oci-registry-secret.yaml
+- taxonomy-repo-secret.yaml
+- judge-secret.yaml
+- teacher-secret.yaml
+
+replacements:
+- source:
+    kind: ConfigMap
+    name: instructlab-pipeline-params
+    fieldPath: data.k8s_storage_class_name
+  targets:
+  - select:
+      kind: DataSciencePipelinesApplication
+      name: dspa
+    fieldPaths:
+    - spec.persistentStorage.storageClassName
+
+configMapGenerator:
+- name: instructlab-pipeline-params
+  literals:
+  #TODO: Replace storage class
+  - k8s_storage_class_name=nfs-csi
+  - train_gpu_identifier=nvidia.com/gpu
+  - eval_gpu_identifier=nvidia.com/gpu
+  - train_num_workers=2
+  - train_num_epochs_phase_1=7
+  - train_num_epochs_phase_2=10

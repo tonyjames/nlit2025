@@ -1,0 +1,21 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: instructlab-pipeline-monitor
+  labels:
+    app: instructlab-pipeline
+    app.kubernetes.io/part-of: instructlab
+    app.kubernetes.io/component: metrics
+spec:
+  endpoints:
+  - interval: 30s
+    port: metrics
+    path: /metrics
+    scheme: http
+  selector:
+    matchLabels:
+      app: instructlab-pipeline
+      app.kubernetes.io/component: metrics
+  namespaceSelector:
+    matchNames:
+    - data-science-project

@@ -1,0 +1,27 @@
+apiVersion: datasciencecluster.opendatahub.io/v1
+kind: DataScienceCluster
+metadata:
+  name: default-dsc
+spec:
+  components:
+    kserve:
+      serving:
+        enabled: true
+        modelMesh:
+          enabled: true
+          serviceType: Standard
+      replicas: 1
+    dspipelines:
+      enabled: true
+    modelRegistry:
+      enabled: true
+    trainingOperator:
+      enabled: true
+    dashboard:
+      enabled: true
+    datasciencepipelines:
+      enabled: true
+    modelmeshserving:
+      enabled: true
+    workbenches:
+      enabled: true
