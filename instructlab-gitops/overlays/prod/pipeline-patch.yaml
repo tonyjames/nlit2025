@@ -4,5 +4,5 @@ metadata:
   name: dspa
 spec:
   persistentStorage:
-    storageClassName: ocs-rwx
+    storageClassName: gp3-csi
     size: 100Gi

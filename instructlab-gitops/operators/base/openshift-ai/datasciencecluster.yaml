@@ -1,27 +1,38 @@
 apiVersion: datasciencecluster.opendatahub.io/v1
 kind: DataScienceCluster
 metadata:
-  name: default-dsc
+  name: default
 spec:
   components:
-    kserve:
-      serving:
-        enabled: true
-        modelMesh:
-          enabled: true
-          serviceType: Standard
-      replicas: 1
-    dspipelines:
-      enabled: true
-    modelRegistry:
-      enabled: true
-    trainingOperator:
-      enabled: true
+    codeflare:
+      managementState: Managed
     dashboard:
-      enabled: true
+      managementState: Managed
     datasciencepipelines:
-      enabled: true
+      managementState: Managed
+    kserve:
+      managementState: Managed
+      nim:
+        managementState: Managed
+      rawDeploymentServiceConfig: Headless
+      serving:
+        ingressGateway:
+          certificate:
+            type: OpenshiftDefaultIngress
+        managementState: Managed
+        name: knative-serving
+    kueue:
+      managementState: Managed
     modelmeshserving:
-      enabled: true
+      managementState: Removed
+    modelregistry:
+      managementState: Removed
+      registriesNamespace: rhoai-model-registries
+    ray:
+      managementState: Managed
+    trainingoperator:
+      managementState: Managed
+    trustyai:
+      managementState: Managed
     workbenches:
-      enabled: true
+      managementState: Managed

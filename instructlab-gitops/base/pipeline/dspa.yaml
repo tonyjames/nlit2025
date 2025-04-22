@@ -4,11 +4,41 @@ metadata:
   name: dspa
 spec:
   apiServer:
-    apiServerImage: quay.io/modh/odh-pipeline-rest-server:v2-latest
+    artifactSignedURLExpirySeconds: 60
+    caBundleFileMountPath: ""
+    caBundleFileName: ""
+    deploy: true
+    enableOauth: true
+    enableSamplePipeline: false
     managedPipelines:
       instructLab:
         state: Managed
-  persistentStorage:
-  # TODO: replace storageClassName
-    storageClassName: nfs-csi
-    size: 10Gi
+  database:
+    disableHealthCheck: false
+    mariaDB:
+      deploy: true
+      pipelineDBName: mlpipeline
+      pvcSize: 10Gi
+      username: mlpipeline
+  dspVersion: v2
+  objectStorage:
+    disableHealthCheck: false
+    enableExternalRoute: false
+    externalStorage:
+      basePath: ""
+      bucket: some-bucket
+      host: some-s3-endpoint.com
+      port: ""
+      region: us-east-1
+      s3CredentialsSecret:
+        accessKey: AWS_ACCESS_KEY_ID
+        secretKey: AWS_SECRET_ACCESS_KEY
+        secretName: dashboard-dspa-secret
+      scheme: https
+  persistenceAgent:
+    deploy: true
+    numWorkers: 2
+  podToPodTLS: true
+  scheduledWorkflow:
+    cronScheduleTimezone: UTC
+    deploy: true

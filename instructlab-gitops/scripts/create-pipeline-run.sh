@@ -37,7 +37,7 @@ fi
 
 # Load StorageClass from ConfigMap (fallback to env var if not found)
 if [ -z "$STORAGE_CLASS_NAME" ]; then
-  STORAGE_CLASS_NAME=$(oc get configmap -n $NAMESPACE instructlab-pipeline-params-${ENVIRONMENT} -o jsonpath='{.data.k8s_storage_class_name}' 2>/dev/null || echo "nfs-csi")
+  STORAGE_CLASS_NAME=$(oc get configmap -n $NAMESPACE instructlab-pipeline-params-${ENVIRONMENT} -o jsonpath='{.data.k8s_storage_class_name}' 2>/dev/null || echo "gp3-csi")
 fi
 
 # Create a temporary file for the pipeline run

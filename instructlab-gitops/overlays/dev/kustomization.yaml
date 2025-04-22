@@ -5,15 +5,13 @@ resources:
 
 patches:
 - path: pipeline-patch.yaml
-- path: storage-patch.yaml
 - path: secrets-patch.yaml
 
 configMapGenerator:
 - name: instructlab-pipeline-params
   behavior: merge
   literals:
-  # TODO: Replace storage class
-  - k8s_storage_class_name=nfs-csi
+  - k8s_storage_class_name=gp3-csi
   - train_gpu_identifier=nvidia.com/gpu
   - sdg_batch_size=16
   - sdg_num_workers=4
