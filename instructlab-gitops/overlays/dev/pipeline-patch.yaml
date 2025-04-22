@@ -1,0 +1,10 @@
+apiVersion: datasciencepipelinesapplications.opendatahub.io/v1alpha1
+kind: DataSciencePipelinesApplication
+metadata:
+  name: dspa
+spec:
+  persistentStorage:
+    storageClassName: nfs-csi
+    size: 20Gi
+
+# TODO: replace storageClassName

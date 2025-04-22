@@ -1,0 +1,26 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: instructlab-run-
+spec:
+  pipelineRef:
+    name: instructlab
+  params:
+  - name: sdg_base_model
+    value: ${SDG_BASE_MODEL}
+  - name: sdg_repo_url
+    value: ${SDG_REPO_URL}
+  - name: output_oci_model_uri
+    value: ${OUTPUT_OCI_MODEL_URI}
+  - name: output_oci_registry_secret
+    value: ${OCI_REGISTRY_SECRET}
+  - name: output_model_name
+    value: ${OUTPUT_MODEL_NAME}
+  - name: output_model_version
+    value: ${OUTPUT_MODEL_VERSION}
+  - name: k8s_storage_class_name
+    value: ${STORAGE_CLASS_NAME}
+  - name: train_gpu_identifier
+    value: ${TRAIN_GPU_IDENTIFIER}
+  - name: train_num_workers
+    value: ${TRAIN_NUM_WORKERS}

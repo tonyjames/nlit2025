@@ -1,0 +1,10 @@
+apiVersion: datasciencecluster.opendatahub.io/v1
+kind: DataScienceCluster
+metadata:
+  name: default-dsc
+spec:
+  components:
+    kserve:
+      replicas: 1
+    trainingOperator:
+      replicas: 2

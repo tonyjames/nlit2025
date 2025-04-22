@@ -1,0 +1,21 @@
+apiVersion: operator.openshift.io/v1alpha1
+kind: ImageContentSourcePolicy
+metadata:
+  name: instructlab-mirrors
+spec:
+  repositoryDigestMirrors:
+  - mirrors:
+    - internal-registry.example.com/rhelai1/instructlab-nvidia-rhel9
+    source: registry.redhat.io/rhelai1/instructlab-nvidia-rhel9
+  - mirrors:
+    - internal-registry.example.com/modh/odh-generic-data-science-notebook
+    source: quay.io/modh/odh-generic-data-science-notebook
+  - mirrors:
+    - internal-registry.example.com/modh/vllm
+    source: quay.io/modh/vllm
+  - mirrors:
+    - internal-registry.example.com/opendatahub/workbench-images
+    source: quay.io/opendatahub/workbench-images
+  - mirrors:
+    - internal-registry.example.com/oras-project/oras
+    source: ghcr.io/oras-project/oras

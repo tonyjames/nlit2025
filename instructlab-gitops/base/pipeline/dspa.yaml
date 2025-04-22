@@ -1,0 +1,14 @@
+apiVersion: datasciencepipelinesapplications.opendatahub.io/v1alpha1
+kind: DataSciencePipelinesApplication
+metadata:
+  name: dspa
+spec:
+  apiServer:
+    apiServerImage: quay.io/modh/odh-pipeline-rest-server:v2-latest
+    managedPipelines:
+      instructLab:
+        state: Managed
+  persistentStorage:
+  # TODO: replace storageClassName
+    storageClassName: nfs-csi
+    size: 10Gi

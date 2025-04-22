@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: openshift-ai-operators
+  namespace: openshift-gitops
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/open-demos/nlit2025.git
+    targetRevision: HEAD
+    path: instructlab-gitops/operators/overlays/dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: openshift-operators
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=false
+    - ServerSideApply=true
+  ignoreDifferences:
+  - group: operators.coreos.com
+    kind: Subscription
+    jsonPointers:
+    - /spec/installPlanApproval
+    - /status
