@@ -1,8 +1,0 @@
-apiVersion: datasciencepipelinesapplications.opendatahub.io/v1alpha1
-kind: DataSciencePipelinesApplication
-metadata:
-  name: dspa
-spec:
-  persistentStorage:
-    storageClassName: gp3-csi
-    size: 100Gi

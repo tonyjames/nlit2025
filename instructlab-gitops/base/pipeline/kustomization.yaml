@@ -7,18 +7,6 @@ resources:
 - judge-secret.yaml
 - teacher-secret.yaml
 
-replacements:
-- source:
-    kind: ConfigMap
-    name: instructlab-pipeline-params
-    fieldPath: data.k8s_storage_class_name
-  targets:
-  - select:
-      kind: DataSciencePipelinesApplication
-      name: dspa
-    fieldPaths:
-    - spec.persistentStorage.storageClassName
-
 configMapGenerator:
 - name: instructlab-pipeline-params
   literals:
