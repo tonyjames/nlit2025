@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: instructlab-pipeline
+  namespace: openshift-gitops
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/open-demos/nlit2025.git
+    targetRevision: HEAD
+    path: instructlab-gitops/overlays/dev
+    kustomize:
+      images:
+      - quay.io/modh/odh-pipeline-rest-server:v2-latest
+      commonLabels:
+        app.kubernetes.io/managed-by: argocd
+        app.kubernetes.io/part-of: instructlab
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: data-science-project
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true
+    - ApplyOutOfSyncOnly=true
+  revisionHistoryLimit: 3

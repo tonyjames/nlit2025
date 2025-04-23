@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../base
+
+patches:
+- path: secrets-patch.yaml
+
+configMapGenerator:
+- name: instructlab-pipeline-params
+  behavior: merge
+  literals:
+  - k8s_storage_class_name=gp3-csi
+  - train_gpu_identifier=nvidia.com/gpu
+  - sdg_batch_size=32
+  - sdg_num_workers=8
+  - train_num_workers=4
+  - train_memory_per_worker=200Gi
