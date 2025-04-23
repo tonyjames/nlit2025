@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/open-demos/nlit2025.git
     targetRevision: HEAD
-    path: instructlab-gitops/base/pipeline
+    path: instructlab-gitops/overlays/dev
     kustomize:
       images:
       - quay.io/modh/odh-pipeline-rest-server:v2-latest
