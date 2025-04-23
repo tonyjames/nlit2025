@@ -4,7 +4,6 @@ resources:
 - ../../base
 
 patches:
-- path: pipeline-patch.yaml
 - path: secrets-patch.yaml
 
 configMapGenerator:
